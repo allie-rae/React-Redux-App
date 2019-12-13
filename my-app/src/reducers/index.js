@@ -6,7 +6,7 @@ import {
 
 
 const initialState = {
-    catFact: [],
+    catFact: '',
     error: '',
     isFetching: false
 }

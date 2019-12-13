@@ -7,8 +7,6 @@ const Nav1 = () => {
         <Navbar.Brand href="#">Cat Facts</Navbar.Brand>
         <Nav>
             <Nav.Link href="#">Generate Fact</Nav.Link>
-            <Nav.Link href="#">Link 2</Nav.Link>
-            <Nav.Link href="#">Link 3</Nav.Link>
         </Nav>
     </Navbar>
 }

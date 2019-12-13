@@ -1,15 +1,34 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { getCatFact } from '../actions'
+import React from 'react';
+import { connect } from 'react-redux';
+import { getCatFact } from '../actions';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Spinner from 'react-bootstrap/Spinner';
+import '../App.css';
 
 const GenerateFact = (props) => {
-    console.log(props)
+    console.log("generateFact props", props)
     return <>
-        <button onClick={(e) => e.preventDefault(), getCatFact()}>
-            Generate Fact
-        </button>
-        {props.isFetching && <p>Loading your cat fact...</p>}
-        <ul>{props.catFact.map(fact => <li>{fact.text}</li>)}</ul>
+        <div className="wrapper">
+            {props.isFetching && <><Spinner animation="border" /> <br /> <br /></>}
+            {!props.isFetching && props.catFact &&
+                <Card bg="secondary" text="white" style={{ width: '18rem' }} className="center">
+                    <Card.Header><i class="fas fa-cat"></i></Card.Header>
+                    <Card.Body>
+                        <Card.Title>Random Cat Fact:</Card.Title>
+                        <Card.Text>
+                            {props.catFact}
+                        </Card.Text>
+                    </Card.Body>
+                </Card>}
+            <Button onClick={(e) => {
+                e.preventDefault();
+                props.getCatFact()
+            }}
+                variant="outline-dark">
+                Generate Fact
+        </Button>
+        </div>
     </>
 }
 
